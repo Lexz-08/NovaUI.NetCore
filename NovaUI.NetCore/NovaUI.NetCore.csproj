@@ -9,6 +9,7 @@
     <Authors>JerryChu</Authors>
     <Company />
     <Description>A dark-themed UI for Windows Forms made with C#, for C#.</Description>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
   </PropertyGroup>
 
 </Project>
