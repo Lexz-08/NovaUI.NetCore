@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 using Microsoft.Win32;
-
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace NovaUI.NetCore.Helpers.LibMain
 {
@@ -65,14 +62,23 @@ namespace NovaUI.NetCore.Helpers.LibMain
         }
 
         private static readonly Dictionary<RegistryCursor, (Cursor Cursor, string? Path)> cursors = [];
-
-        private static T GetMember<T>(Type t, string name)
+        private static readonly Dictionary<RegistryCursor, nint> formCursors = new()
         {
-            System.Reflection.PropertyInfo? prop = t.GetType().GetProperty(name) ?? throw new NullReferenceException($"Property '{name}' of '{t.Name}' does not exist.");
-
-            object? val = prop.GetValue(null) ?? throw new NullReferenceException($"Property '{name}' of '{t.Name}' is not static.");
-            return (T)val;
-        }
+            { RegistryCursor.AppStarting, Cursors.AppStarting.Handle },
+			{ RegistryCursor.Arrow, Cursors.Arrow.Handle },
+			{ RegistryCursor.Crosshair, Cursors.Cross.Handle },
+			{ RegistryCursor.Hand, Cursors.Hand.Handle },
+			{ RegistryCursor.Help, Cursors.Help.Handle },
+			{ RegistryCursor.IBeam, Cursors.IBeam.Handle },
+			{ RegistryCursor.No, Cursors.No.Handle },
+			{ RegistryCursor.SizeAll, Cursors.SizeAll.Handle },
+			{ RegistryCursor.SizeNESW, Cursors.SizeNESW.Handle },
+			{ RegistryCursor.SizeNS, Cursors.SizeNS.Handle },
+			{ RegistryCursor.SizeNWSE, Cursors.SizeNWSE.Handle },
+			{ RegistryCursor.SizeWE, Cursors.SizeWE.Handle },
+			{ RegistryCursor.UpArrow, Cursors.UpArrow.Handle },
+			{ RegistryCursor.Wait, Cursors.WaitCursor.Handle }
+		};
 
         public static void GetRegistryCursor(RegistryCursor cursor, Control control)
         {
@@ -86,9 +92,7 @@ namespace NovaUI.NetCore.Helpers.LibMain
                 {
                     if (flag) pair.Cursor.Dispose();
 
-                    nint handle = !string.IsNullOrEmpty(cursorPath)
-                        ? LoadCursorFromFile(cursorPath)
-                        : GetMember<Cursor>(typeof(Cursor), cursor.ToString()).Handle;
+                    nint handle = !string.IsNullOrEmpty(cursorPath) ? LoadCursorFromFile(cursorPath) : formCursors[cursor];
 
                     Cursor newCur = new(handle);
                     cursors[cursor] = (newCur, null);
