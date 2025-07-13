@@ -391,78 +391,68 @@ namespace NovaUI.NetCore.Windows
 		{
 			base.OnMouseMove(e);
 
-			CursorType newCursor = 0;
-
-			if ((left.Contains(e.Location) || right.Contains(e.Location)) && canResize)
+			if ((left.Contains(e.Location) || right.Contains(e.Location)) && canResize && cursorType != CursorType.SizeWE)
 			{
-				newCursor = CursorType.SizeWE;
-				if (newCursor != cursorType)
-				{
-					cursorType = newCursor;
+				cursorType = CursorType.SizeWE;
 
-					if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeWE, this);
-					else Cursor = Cursors.SizeWE;
-				}
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeWE, this);
+				else Cursor = Cursors.SizeWE;
+
+				Invalidate();
+				GC.Collect();
 			}
-			else if ((top.Contains(e.Location) || bottom.Contains(e.Location)) && canResize)
+			else if ((top.Contains(e.Location) || bottom.Contains(e.Location)) && canResize && cursorType != CursorType.SizeNS)
 			{
-				newCursor = CursorType.SizeNS;
-				if (newCursor != cursorType)
-				{
-					cursorType = newCursor;
+				cursorType = CursorType.SizeNS;
 
-					if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNS, this);
-					else Cursor = Cursors.SizeNS;
-				}
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNS, this);
+				else Cursor = Cursors.SizeNS;
+
+				Invalidate();
+				GC.Collect();
 			}
-			else if ((topLeft.Contains(e.Location) || bottomRight.Contains(e.Location)) && canResize)
+			else if ((topLeft.Contains(e.Location) || bottomRight.Contains(e.Location)) && canResize && cursorType != CursorType.SizeNWSE)
 			{
-				newCursor = CursorType.SizeNWSE;
-				if (newCursor != cursorType)
-				{
-					cursorType = newCursor;
+				cursorType = CursorType.SizeNWSE;
 
-					if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNWSE, this);
-					else Cursor = Cursors.SizeNWSE;
-				}
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNWSE, this);
+				else Cursor = Cursors.SizeNWSE;
+
+				Invalidate();
+				GC.Collect();
 			}
-			else if ((topRight.Contains(e.Location) || bottomLeft.Contains(e.Location)) && canResize)
+			else if ((topRight.Contains(e.Location) || bottomLeft.Contains(e.Location)) && canResize && cursorType != CursorType.SizeNESW)
 			{
-				newCursor = CursorType.SizeNESW;
-				if (newCursor != cursorType)
-				{
-					cursorType = newCursor;
+				cursorType = CursorType.SizeNESW;
 
-					if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNESW, this);
-					else Cursor = Cursors.SizeNESW;
-				}
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNESW, this);
+				else Cursor = Cursors.SizeNESW;
+
+				Invalidate();
+				GC.Collect();
 			}
 			else if (close.Contains(e.Location) ||
 				(minimize.Contains(e.Location) && MinimizeBox) ||
-				(maximize.Contains(e.Location) && MinimizeBox && MaximizeBox))
+				(maximize.Contains(e.Location) && MinimizeBox && MaximizeBox) && cursorType != CursorType.Hand)
 			{
-				newCursor = CursorType.Hand;
-				if (newCursor != cursorType)
-				{
-					cursorType = newCursor;
+				cursorType = CursorType.Hand;
 
-					if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.Hand, this);
-					else Cursor = Cursors.Hand;
-				}
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.Hand, this);
+				else Cursor = Cursors.Hand;
+
+				Invalidate();
+				GC.Collect();
 			}
-			else
+			else if (cursorType != CursorType.Arrow)
 			{
-				newCursor = CursorType.Arrow;
-				if (newCursor != cursorType)
-				{
-					cursorType = newCursor;
+				cursorType = CursorType.Arrow;
 
-					if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.Arrow, this);
-					else Cursor = originalCursor;
-				}
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.Arrow, this);
+				else Cursor = originalCursor;
+
+				Invalidate();
+				GC.Collect();
 			}
-
-			Invalidate();
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e)

@@ -5,6 +5,8 @@ using NovaUI.NetCore.Events;
 using NovaUI.NetCore.Helpers;
 using NovaUI.NetCore.Helpers.LibMain;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+
 namespace NovaUI.NetCore.Windows
 {
     [DefaultEvent("Load")]
@@ -220,65 +222,56 @@ namespace NovaUI.NetCore.Windows
 		{
 			base.OnMouseMove(e);
 
-            CursorType newCursor = 0;
+			if ((left.Contains(e.Location) || right.Contains(e.Location)) && canResize && cursorType != CursorType.SizeWE)
+			{
+				cursorType = CursorType.SizeWE;
 
-            if ((left.Contains(e.Location) || right.Contains(e.Location)) && canResize)
-            {
-                newCursor = CursorType.SizeWE;
-                if (newCursor != cursorType)
-                {
-                    cursorType = newCursor;
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeWE, this);
+				else Cursor = Cursors.SizeWE;
 
-                    if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeWE, this);
-                    else Cursor = Cursors.SizeWE;
-                }
-            }
-            else if ((top.Contains(e.Location) || bottom.Contains(e.Location)) && canResize)
-            {
-                newCursor = CursorType.SizeNS;
-                if (newCursor != cursorType)
-                {
-                    cursorType = newCursor;
+				Invalidate();
+				GC.Collect();
+			}
+			else if ((top.Contains(e.Location) || bottom.Contains(e.Location)) && canResize && cursorType != CursorType.SizeNS)
+			{
+				cursorType = CursorType.SizeNS;
 
-                    if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNS, this);
-                    else Cursor = Cursors.SizeNS;
-                }
-            }
-            else if ((topLeft.Contains(e.Location) || bottomRight.Contains(e.Location)) && canResize)
-            {
-                newCursor = CursorType.SizeNWSE;
-                if (newCursor != cursorType)
-                {
-                    cursorType = newCursor;
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNS, this);
+				else Cursor = Cursors.SizeNS;
 
-                    if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNWSE, this);
-                    else Cursor = Cursors.SizeNWSE;
-                }
-            }
-            else if ((topRight.Contains(e.Location) || bottomLeft.Contains(e.Location)) && canResize)
-            {
-                newCursor = CursorType.SizeNS;
-                if (newCursor != cursorType)
-                {
-                    cursorType = newCursor;
+				Invalidate();
+				GC.Collect();
+			}
+			else if ((topLeft.Contains(e.Location) || bottomRight.Contains(e.Location)) && canResize && cursorType != CursorType.SizeNWSE)
+			{
+				cursorType = CursorType.SizeNWSE;
 
-                    if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNS, this);
-                    else Cursor = Cursors.SizeNS;
-                }
-            }
-            else
-            {
-                newCursor = CursorType.Arrow;
-                if (newCursor != cursorType)
-                {
-                    cursorType = newCursor;
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNWSE, this);
+				else Cursor = Cursors.SizeNWSE;
 
-                    if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.Arrow, this);
-                    else Cursor = originalCursor;
-                }
-            }
+				Invalidate();
+				GC.Collect();
+			}
+			else if ((topRight.Contains(e.Location) || bottomLeft.Contains(e.Location)) && canResize && cursorType != CursorType.SizeNESW)
+			{
+				cursorType = CursorType.SizeNESW;
 
-            Invalidate();
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.SizeNESW, this);
+				else Cursor = Cursors.SizeNESW;
+
+				Invalidate();
+				GC.Collect();
+			}
+			else if (cursorType != CursorType.Arrow)
+			{
+				cursorType = CursorType.Arrow;
+
+				if (useUserSchemeCursor) Win32.GetRegistryCursor(Win32.RegistryCursor.Arrow, this);
+				else Cursor = originalCursor;
+
+				Invalidate();
+				GC.Collect();
+			}
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e)
