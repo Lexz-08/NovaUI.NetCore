@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Title>NovaUI</Title>
+    <Authors>JerryChu</Authors>
+    <Company />
+    <Description>A dark-themed UI for Windows Forms made with C#, for C#.</Description>
+  </PropertyGroup>
+
+</Project>
