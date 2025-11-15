@@ -270,15 +270,15 @@ namespace NovaUI.NetCore.Controls
 						new Rectangle(borderWidth - 1, borderWidth - 1, Width - (borderWidth * 2) + 1, Height - (borderWidth * 2) + 1)
 						.Round(Math.Max(1, borderRadius - borderWidth)));
 					e.Graphics.DrawPath(mouseDown ? borderDownPen : borderNormalPen,
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1)
+						new RectangleF(borderWidth / 2f - 0.5f, borderWidth / 2f - 0.5f, Width - borderWidth, Height - borderWidth)
 						.Round(borderRadius));
 				}
 				else
 				{
 					e.Graphics.FillPath(mouseHover ? (mouseDown ? noBorderDownBrush : noBorderHoverBrush) : noBorderNormalBrush,
-						new Rectangle(0, 0, Width - 1, Height - 1).Round(borderRadius));
+						new Rectangle(0, 0, Width - 1, Height - 2).Round(borderRadius));
 					e.Graphics.DrawPath(mouseHover ? (mouseDown ? noBorderDownPen : noBorderHoverPen) : noBorderNormalPen,
-						new Rectangle(0, 0, Width - 1, Height - 1).Round(borderRadius));
+						new Rectangle(0, 0, Width - 1, Height - 2).Round(borderRadius));
 				}
 			}
 			else
@@ -288,7 +288,7 @@ namespace NovaUI.NetCore.Controls
 					e.Graphics.FillRectangle(mouseHover ? (mouseDown ? backDownBrush : backHoverBrush) : backNormalBrush,
 						new Rectangle(borderWidth, borderWidth, Width - (borderWidth * 2), Height - (borderWidth * 2)));
 					e.Graphics.DrawRectangle(mouseDown ? borderDownPen : borderNormalPen,
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1));
+						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth, Height - borderWidth));
 				}
 				else e.Graphics.FillRectangle(mouseHover ? (mouseDown ? noBorderDownBrush : noBorderHoverBrush) : noBorderNormalBrush,
 					new Rectangle(0, 0, Width, Height));

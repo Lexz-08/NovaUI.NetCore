@@ -124,7 +124,7 @@ namespace NovaUI.NetCore.Controls
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		[Obsolete("The Text property of this control is not needed.", true)]
+		[Obsolete("The Text property of this control is not needed.")] // Designer doesn't understand what obselete means apparently XD
 		public new string Text = string.Empty;
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -240,8 +240,8 @@ namespace NovaUI.NetCore.Controls
 
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-			e.Graphics.FillPath(backBrush, new Rectangle(2, 2, Width - 5, Height - 5).Round(radius));
-			e.Graphics.DrawPath(borderPen, new Rectangle(1, 1, Width - 3, Height - 3).Round(radius - 2));
+			e.Graphics.FillPath(backBrush, new RectangleF(0.5f, 0.5f, Width - 2, Height - 2).Round(radius));
+			e.Graphics.DrawPath(borderPen, new RectangleF(0.5f, 0.5f, Width - 2, Height - 2).Round(radius - 2));
 			e.Graphics.FillEllipse(Checked
 				? (mouseHover ? (mouseDown ? checkedToggleDownBrush : checkedToggleHoverBrush) : checkedToggleNormalBrush)
 				: (mouseHover ? (mouseDown ? uncheckedToggleDownBrush : uncheckedToggleHoverBrush) : uncheckedToggleNormalBrush),

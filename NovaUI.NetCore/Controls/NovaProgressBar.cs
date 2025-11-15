@@ -269,13 +269,13 @@ namespace NovaUI.NetCore.Controls
 					e.Graphics.FillPath(backBrush,
 						new Rectangle(borderWidth - 1, borderWidth - 1, Width - (borderWidth * 2) + 1, Height - (borderWidth * 2) + 1).Round(Math.Max(1, borderRadius - borderWidth)));
 					e.Graphics.DrawPath(borderPen,
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1).Round(borderRadius));
+						new RectangleF(borderWidth / 2f - 0.5f, borderWidth / 2f - 0.5f, Width - borderWidth, Height - borderWidth).Round(borderRadius));
 
 					e.Graphics.SetClip(new Rectangle(borderWidth, borderWidth, (int)((Width - (borderWidth * 2)) * percent), Height - (borderWidth * 2)));
 					e.Graphics.FillPath(progressBrush,
 						new Rectangle(borderWidth + 1, borderWidth + 1, Width - (borderWidth * 2) - 3, Height - (borderWidth * 2) - 3).Round(borderRadius - borderWidth));
 					e.Graphics.DrawPath(progressPen,
-						new Rectangle(borderWidth + 1, borderWidth + 1, Width - (borderWidth * 2) - 3, Height - (borderWidth * 2) - 4).Round(borderRadius - borderWidth));
+						new Rectangle(borderWidth + 1, borderWidth + 1, Width - (borderWidth * 2) - 3, Height - (borderWidth * 2) - 3).Round(borderRadius - borderWidth));
 				}
 				else
 				{
@@ -298,7 +298,7 @@ namespace NovaUI.NetCore.Controls
 					e.Graphics.FillRectangle(backBrush,
 						new Rectangle(borderWidth, borderWidth, Width - (borderWidth * 2), Height - (borderWidth * 2)));
 					e.Graphics.DrawRectangle(borderPen,
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1));
+						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth, Height - borderWidth));
 
 					e.Graphics.SetClip(new Rectangle(borderWidth, borderWidth, (int)((Width - (borderWidth * 2)) * percent), Height - (borderWidth * 2)));
 					e.Graphics.FillRectangle(progressBrush,

@@ -181,7 +181,7 @@ namespace NovaUI.NetCore.Controls
 			BackColor = Constants.PrimaryColor;
 			ForeColor = Constants.TextColor;
 
-			checkFont = new("Segoe UI MDL2 Assets", size * 0.75f);
+			checkFont = new("Segoe MDL2 Assets", size * 0.5f);
 		}
 
 		protected override void OnMouseEnter(EventArgs e)
@@ -256,20 +256,20 @@ namespace NovaUI.NetCore.Controls
 				e.Graphics.FillPath(Checked ? (mouseHover ? (mouseDown ? checkedBackDownBrush : checkedBackHoverBrush) : checkedBackNormalBrush) : (mouseHover ? (mouseDown ? uncheckedBackDownBrush : uncheckedBackHoverBrush) : uncheckedBackNormalBrush),
 					new Rectangle(borderWidth - 1, pos + borderWidth - 1, size - (borderWidth * 2) + 1, size - (borderWidth * 2) + 1).Round(Math.Max(1, borderRadius - borderWidth)));
 				e.Graphics.DrawPath(Checked ? (mouseHover ? (mouseDown ? checkedBorderDownPen : checkedBorderHoverPen) : checkedBorderNormalPen) : uncheckedBorderPen,
-					new RectangleF(borderWidth / 2f, borderWidth / 2f + pos, size - borderWidth - 1, size - borderWidth - 1).Round(borderRadius));
+					new RectangleF(borderWidth / 2f - 0.5f, borderWidth / 2f + pos - 0.5f, size - borderWidth, size - borderWidth).Round(borderRadius));
 			}
 			else
 			{
 				e.Graphics.FillRectangle(Checked ? (mouseHover ? (mouseDown ? checkedBackDownBrush : checkedBackHoverBrush) : checkedBackNormalBrush) : (mouseHover ? (mouseDown ? uncheckedBackDownBrush : uncheckedBackHoverBrush) : uncheckedBackNormalBrush),
-					new Rectangle(borderWidth, pos + borderWidth, size - (borderWidth * 2), size - (borderWidth * 2)));
+					new Rectangle(borderWidth - 1, pos + borderWidth, size - (borderWidth * 2) + 1, size - (borderWidth * 2)));
 				e.Graphics.DrawRectangle(Checked ? (mouseHover ? (mouseDown ? checkedBorderDownPen : checkedBorderHoverPen) : checkedBorderNormalPen) : uncheckedBorderPen,
-					new RectangleF(borderWidth / 2f, borderWidth / 2f + pos, size - borderWidth - 1, size - borderWidth - 1));
+					new RectangleF(borderWidth / 2f - 1, borderWidth / 2f + pos, size - borderWidth + 1, size - borderWidth));
 			}
 
 			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
 			if (Checked) e.Graphics.DrawString("\uE65F", checkFont, textBrush,
-				new Rectangle(-1, pos + 1, size, size), Constants.CenterAlign);
+				new Rectangle(-1, pos, size, size), Constants.CenterAlign);
 			e.Graphics.DrawString(Text, Font, textBrush,
 				new Rectangle(size + borderWidth + 1, 0, Width - size - borderWidth - 1, Height), Constants.LeftAlign);
 		}

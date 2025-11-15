@@ -31,6 +31,7 @@ namespace NovaUI.NetCore.Controls
 		private string dialogTitle = "Please select a file to open...";
 		private string dialogFilter = "All Files|*.*";
 		private int filterIndex = 1;
+		// needed for Visual Studio to auto-fill values in Designer
 		private CharacterCasing casing = CharacterCasing.Normal;
 		private HorizontalAlignment align = HorizontalAlignment.Left;
 		private Cursor originalCursor = Cursors.IBeam;
@@ -139,6 +140,12 @@ namespace NovaUI.NetCore.Controls
 			set
 			{
 				borderWidth = Math.Max(1, value);
+				if (borderNormalPen.Width != value)
+				{
+					borderNormalPen.Width = value;
+					borderHoverPen.Width = value;
+					borderFocusedPen.Width = value;
+				}
 				UpdateInputBounds();
 				OnBorderWidthChanged(EventArgs.Empty);
 			}
@@ -475,23 +482,10 @@ namespace NovaUI.NetCore.Controls
 
 			if (underlineBorder)
 			{
-				if (borderRadius > 0)
-				{
-					e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-					e.Graphics.DrawPath(Focused ? borderFocusedPen : (mouseHover ? borderHoverPen : borderNormalPen),
-						new RectangleF(borderWidth / 2f, borderWidth / 2f + 1, Width - borderWidth - 1, Height - borderWidth - 3).Round(borderRadius));
-					e.Graphics.FillPath(backBrush,
-						new Rectangle(0, 0, Width - 1, Height - borderWidth - 1).Round(borderRadius));
-					e.Graphics.DrawPath(backPen,
-						new Rectangle(0, 0, Width - 1, Height - borderWidth - 1).Round(borderRadius));
-				}
-				else
-				{
-					e.Graphics.FillRectangle(backBrush,
-						new Rectangle(0, 0, Width, Height - borderWidth));
-					e.Graphics.DrawRectangle(Focused ? borderFocusedPen : (mouseHover ? borderHoverPen : borderNormalPen),
-						new Rectangle(0, Height - borderWidth, Width, borderWidth));
-				}
+				e.Graphics.FillRectangle(backBrush,
+					new Rectangle(0, 0, Width, Height - borderWidth));
+				e.Graphics.DrawRectangle(Focused ? borderFocusedPen : (mouseHover ? borderHoverPen : borderNormalPen),
+					new Rectangle(0, Height - borderWidth, Width, borderWidth));
 			}
 			else
 			{
@@ -501,14 +495,14 @@ namespace NovaUI.NetCore.Controls
 					e.Graphics.FillPath(backBrush,
 						new Rectangle(borderWidth - 1, borderWidth - 1, Width - (borderWidth * 2) + 1, Height - (borderWidth * 2) + 1).Round(Math.Max(1, borderRadius - borderWidth)));
 					e.Graphics.DrawPath(Focused ? borderFocusedPen : (mouseHover ? borderHoverPen : borderNormalPen),
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1).Round(borderRadius));
+						new RectangleF(borderWidth / 2f - 0.5f, borderWidth / 2f - 0.5f, Width - borderWidth, Height - borderWidth).Round(borderRadius));
 				}
 				else
 				{
 					e.Graphics.FillRectangle(backBrush,
 						new Rectangle(borderWidth, borderWidth, Width - (borderWidth * 2), Height - (borderWidth * 2)));
 					e.Graphics.DrawRectangle(Focused ? borderFocusedPen : (mouseHover ? borderHoverPen : borderNormalPen),
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1));
+						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth, Height - borderWidth));
 				}
 			}
 		}

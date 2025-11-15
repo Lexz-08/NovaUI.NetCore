@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Configuration;
 
 using NovaUI.NetCore.Helpers;
 using NovaUI.NetCore.Helpers.LibMain;
@@ -250,16 +249,16 @@ namespace NovaUI.NetCore.Controls
 			{
 				e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 				e.Graphics.FillPath(Checked ? (mouseHover ? (mouseDown ? checkedBackDownBrush : checkedBackHoverBrush) : checkedBackNormalBrush) : (mouseHover ? (mouseDown ? uncheckedBackDownBrush : uncheckedBackHoverBrush) : uncheckedBackNormalBrush),
-					new Rectangle(borderWidth - 1, pos + borderWidth - 1, size - (borderWidth * 2) + 1, size - (borderWidth * 2) + 1).Round(Math.Max(1, borderRadius - borderWidth)));
+					new Rectangle(borderWidth - 1, pos + borderWidth - 1, size - (borderWidth * 2) + 2, size - (borderWidth * 2) + 2).Round(Math.Max(1, borderRadius - borderWidth)));
 				e.Graphics.DrawPath(Checked ? (mouseHover ? (mouseDown ? checkedBorderDownPen : checkedBorderHoverPen) : checkedBorderNormalPen) : uncheckedBorderPen,
-					new RectangleF(borderWidth / 2f, pos + borderWidth / 2f, size - borderWidth - 1, size - borderWidth - 1).Round(borderRadius));
+					new RectangleF(borderWidth / 2f - 0.5f, pos + borderWidth / 2f - 0.5f, size - borderWidth + 1, size - borderWidth + 1).Round(borderRadius));
 			}
 			else
 			{
 				e.Graphics.FillRectangle(Checked ? (mouseHover ? (mouseDown ? checkedBackDownBrush : checkedBackHoverBrush) : checkedBackNormalBrush) : (mouseHover ? (mouseDown ? uncheckedBackDownBrush : uncheckedBackHoverBrush) : uncheckedBackNormalBrush),
-					new Rectangle(borderWidth, pos + borderWidth, size - (borderWidth * 2), size - (borderWidth * 2)));
+					new Rectangle(borderWidth, pos + borderWidth, size - (borderWidth * 2) + 1, size - (borderWidth * 2) + 1));
 				e.Graphics.DrawRectangle(Checked ? (mouseHover ? (mouseDown ? checkedBorderDownPen : checkedBorderHoverPen) : checkedBorderNormalPen) : uncheckedBorderPen,
-					new RectangleF(borderWidth / 2f, pos + borderWidth / 2f, size - borderWidth - 1, size - borderWidth - 1));
+					new RectangleF(borderWidth / 2f, pos + borderWidth / 2f, size - borderWidth + 1, size - borderWidth + 1));
 			}
 
 			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;

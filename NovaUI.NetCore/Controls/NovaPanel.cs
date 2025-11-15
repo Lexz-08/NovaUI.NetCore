@@ -136,15 +136,17 @@ namespace NovaUI.NetCore.Controls
 						new Rectangle(borderWidth - 1, borderWidth - 1, Width - (borderWidth * 2) + 1, Height - (borderWidth * 2) + 1)
 						.Rescale(DesignMode ? 2 : 0, DesignMode ? -4 : 0).Round(Math.Max(1, borderRadius - borderWidth)));
 					e.Graphics.DrawPath(borderPen,
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1)
+						new RectangleF(borderWidth / 2f - 0.5f, borderWidth / 2f - 0.5f, Width - borderWidth, Height - borderWidth)
 						.Rescale(DesignMode ? 2 : 0, DesignMode ? -4 : 0).Round(borderRadius));
 				}
 				else
 				{
 					e.Graphics.FillPath(backBrush,
-						new Rectangle(0, 0, Width - 1, Height - 1).Round(borderRadius));
+						new RectangleF(0.5f, 0.5f, Width - 2, Height - 2)
+						.Rescale(DesignMode ? 2 : 0, DesignMode ? -4 : 0).Round(borderRadius));
 					e.Graphics.DrawPath(backPen,
-						new Rectangle(0, 0, Width - 1, Height - 1).Round(borderRadius));
+						new RectangleF(0.5f, 0.5f, Width - 2, Height - 2)
+						.Rescale(DesignMode ? 2 : 0, DesignMode ? -4 : 0).Round(borderRadius));
 				}
 			}
 			else
@@ -154,8 +156,8 @@ namespace NovaUI.NetCore.Controls
 					e.Graphics.FillRectangle(backBrush,
 						new Rectangle(borderWidth, borderWidth, Width - (borderWidth * 2), Height - (borderWidth * 2))
 						.Rescale(DesignMode ? 2 : 0, DesignMode ? -4 : 0));
-					e.Graphics.DrawRectangle(backPen,
-						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth - 1, Height - borderWidth - 1)
+					e.Graphics.DrawRectangle(borderPen,
+						new RectangleF(borderWidth / 2f, borderWidth / 2f, Width - borderWidth, Height - borderWidth)
 						.Rescale(DesignMode ? 2 : 0, DesignMode ? -4 : 0));
 				}
 				else e.Graphics.FillRectangle(backBrush, new Rectangle(0, 0, Width, Height));
