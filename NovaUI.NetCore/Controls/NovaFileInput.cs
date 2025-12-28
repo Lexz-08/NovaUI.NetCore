@@ -210,7 +210,7 @@ namespace NovaUI.NetCore.Controls
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-		[Category("File Dialog"), Description("Gets ir sets the default-selected filter index for the file dialog.")]
+		[Category("File Dialog"), Description("Gets or sets the default-selected filter index for the file dialog.")]
 		public int FilterIndex
 		{
 			get => filterIndex;
