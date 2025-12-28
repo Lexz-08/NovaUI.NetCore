@@ -181,7 +181,8 @@ namespace NovaUI.NetCore.Controls
 
 			e.Graphics.Clear(BackColor);
 
-			e.Graphics.DrawString(Text, Font, textBrush,
+			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+			e.Graphics.DrawString(Text, Font, mouseHover ? linkBrush : textBrush,
 				new Rectangle(0, 0, Width, Height), textAlign);
 		}
 
