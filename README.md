@@ -39,5 +39,5 @@ A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
 [NovaUI.NetCore.dll](https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.dll)
 
 [//]: # (Reference links to save data and make file more readable)
-[LINK_FIRST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/1.0.0/download/NovaUI.dll
-[LINK_LATEST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.dll
+[LINK_FIRST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/1.0.0/download/NovaUI.NetCore.dll
+[LINK_LATEST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.NetCore.dll
