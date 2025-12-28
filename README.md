@@ -2,7 +2,7 @@
 ## Project Information
 [![](https://img.shields.io/badge/.NET_Core-9.0-blue)]()
 [![](https://img.shields.io/badge/build-passing-seagreen)](#)
-[![](https://img.shields.io/badge/latest_version-1.0.1-goldenrod)](https://github.com/Lexz-08/NovaUI.NetCore/releases/tag/1.0.1)
+[![](https://img.shields.io/badge/latest_version-1.0.2-goldenrod)](https://github.com/Lexz-08/NovaUI.NetCore/releases/tag/1.0.2)
 
 ## Description
 A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
@@ -31,9 +31,9 @@ A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
 ## Windows
 | Version Available | Window Type | Description |
 |:-----------------:| ----------- | ----------- |
-| [1.0.0][LINK_FIRST] - [1.0.0][LINK_LATEST] | [Window](https://github.com/Lexz-08/NovaUI.NetCore/blob/master/NovaUI.NetCore/Windows/NovaWindow.cs) | A re-styled window. |
-| [1.0.0][LINK_FIRST] - [1.0.0][LINK_LATEST] | [ToolWindow](https://github.com/Lexz-08/NovaUI.NetCore/blob/master/NovaUI.NetCore/Windows/NovaToolWindow.cs) | A re-styled window without a minimize or maximize button. |
-| [1.0.0][LINK_FIRST] - [1.0.0][LINK_LATEST] | [StrippedWindow](https://github.com/Lexz-08/NovaUI.NetCore/blob/master/NovaUI.NetCore/Windows/NovaStrippedWindow.cs) | A re-styled window without a caption header, minimize button, maximize button, or close button. |
+| [1.0.0][LINK_FIRST] - [Latest][LINK_LATEST] | [Window](https://github.com/Lexz-08/NovaUI.NetCore/blob/master/NovaUI.NetCore/Windows/NovaWindow.cs) | A re-styled window. |
+| [1.0.0][LINK_FIRST] - [Latest][LINK_LATEST] | [ToolWindow](https://github.com/Lexz-08/NovaUI.NetCore/blob/master/NovaUI.NetCore/Windows/NovaToolWindow.cs) | A re-styled window without a minimize or maximize button. |
+| [1.0.0][LINK_FIRST] - [Latest][LINK_LATEST] | [StrippedWindow](https://github.com/Lexz-08/NovaUI.NetCore/blob/master/NovaUI.NetCore/Windows/NovaStrippedWindow.cs) | A re-styled window without a caption header, minimize button, maximize button, or close button. |
 
 ## Download
 [NovaUI.NetCore.dll](https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.dll)
