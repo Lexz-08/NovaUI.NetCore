@@ -2,7 +2,7 @@
 ## Project Information
 [![](https://img.shields.io/badge/.NET_Core-9.0-blue)]()
 [![](https://img.shields.io/badge/build-passing-seagreen)](#)
-[![](https://img.shields.io/badge/latest_version-1.0.2-goldenrod)](https://github.com/Lexz-08/NovaUI.NetCore/releases/tag/1.0.2)
+[![](https://img.shields.io/badge/latest_version-1.0.3-goldenrod)](https://github.com/Lexz-08/NovaUI.NetCore/releases/tag/1.0.3)
 
 ## Description
 A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
