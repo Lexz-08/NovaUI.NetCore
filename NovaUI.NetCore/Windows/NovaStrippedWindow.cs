@@ -5,8 +5,6 @@ using NovaUI.NetCore.Events;
 using NovaUI.NetCore.Helpers;
 using NovaUI.NetCore.Helpers.LibMain;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
-
 namespace NovaUI.NetCore.Windows
 {
     [DefaultEvent("Load")]
