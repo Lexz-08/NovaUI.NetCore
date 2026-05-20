@@ -7,6 +7,22 @@
 ## Description
 A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
 
+## Setup in Vistual Studio 2022
+Due to Visual Studio 2022 not dynamically loading controls into the Toolbox for .NET Core projects, here are instructions to use it in your project. While, yes, importing the DLL would not work via loading it into the designer, I will keep it available just because you can manually design the UI by writing the code yourself.<br/>
+### Terminal
+1. Open **Git Bash** or **Command Prompt** and navigate to your project folder using: `cd path/to/your/project`.
+2. Paste this command into the terminal to put **NovaUI** there for reference: `git clone https://github.com/Lexz-08/NovaUI.NetCore.git`
+3. Open **File Explorer** and check to make sure **NovaUI** was cloned to your project folder.
+### Visual Studio 2022
+1. Right-click the solution
+2. Choose Add → Existing Project
+3. Browse to the folder where you cloned **NovaUI** to
+4. Add it to your solution
+5. Rick-click your project
+6. Choose Add → Project Reference
+7. Compile the project as is (recommended to reference it before working on your project to ensure successful compilation)
+8. You're good to go!
+
 ## Controls
 | Version Available | Control | Description |
 |:-----------------:| ------- | ----------- |
