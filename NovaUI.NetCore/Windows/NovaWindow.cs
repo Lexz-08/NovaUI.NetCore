@@ -507,6 +507,7 @@ namespace NovaUI.NetCore.Windows
 			else if (minimize.Contains(e.Location) && MinimizeBox)
 			{
 				if (animateWindow) Fade(false, () => WindowState = FormWindowState.Minimized);
+				else WindowState = FormWindowState.Minimized;
 			}
 			else if (maximize.Contains(e.Location) && MinimizeBox && MaximizeBox && canResize)
 			{
