@@ -2,10 +2,26 @@
 ## Project Information
 [![](https://img.shields.io/badge/.NET_Core-9.0-blue)]()
 [![](https://img.shields.io/badge/build-passing-seagreen)](#)
-[![](https://img.shields.io/badge/latest_version-1.0.2-goldenrod)](https://github.com/Lexz-08/NovaUI.NetCore/releases/tag/1.0.2)
+[![](https://img.shields.io/badge/latest_version-1.0.3-goldenrod)](https://github.com/Lexz-08/NovaUI.NetCore/releases/tag/1.0.3)
 
 ## Description
 A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
+
+## Setup in Vistual Studio 2022
+Due to Visual Studio 2022 not dynamically loading controls into the Toolbox for .NET Core projects, here are instructions to use it in your project. While, yes, importing the DLL would not work via loading it into the designer, I will keep it available just because you can manually design the UI by writing the code yourself.<br/>
+### Terminal
+1. Open **Git Bash** or **Command Prompt** and navigate to your project folder using: `cd path/to/your/project`.
+2. Paste this command into the terminal to put **NovaUI** there for reference: `git clone https://github.com/Lexz-08/NovaUI.NetCore.git`
+3. Open **File Explorer** and check to make sure **NovaUI** was cloned to your project folder.
+### Visual Studio 2022
+1. Right-click the solution
+2. Choose Add → Existing Project
+3. Browse to the folder where you cloned **NovaUI** to
+4. Add it to your solution
+5. Rick-click your project
+6. Choose Add → Project Reference
+7. Compile the project as is (recommended to reference it before working on your project to ensure successful compilation)
+8. You're good to go!
 
 ## Controls
 | Version Available | Control | Description |
@@ -39,5 +55,5 @@ A .NET Core port of [NovaUI](https://github.com/Lexz-08/NovaUI).
 [NovaUI.NetCore.dll](https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.dll)
 
 [//]: # (Reference links to save data and make file more readable)
-[LINK_FIRST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/1.0.0/download/NovaUI.dll
-[LINK_LATEST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.dll
+[LINK_FIRST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/1.0.0/download/NovaUI.NetCore.dll
+[LINK_LATEST]: https://github.com/Lexz-08/NovaUI.NetCore/releases/latest/download/NovaUI.NetCore.dll
