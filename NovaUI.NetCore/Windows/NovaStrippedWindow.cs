@@ -216,6 +216,12 @@ namespace NovaUI.NetCore.Windows
             }
         }
 
+        protected void MinimizeForm()
+        {
+            stateChangeSize = ClientSize;
+            WindowState = FormWindowState.Minimized;
+        }
+
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
 			base.OnMouseMove(e);
@@ -427,7 +433,6 @@ namespace NovaUI.NetCore.Windows
                 {
                     int wParam = (int)m.WParam & 0xFFF0;
 
-                    if (wParam == Win32.SC_MINIMIZE) stateChangeSize = ClientSize;
                     if (wParam == Win32.SC_RESTORE) Size = stateChangeSize;
                 }
             }
