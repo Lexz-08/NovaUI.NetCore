@@ -506,8 +506,16 @@ namespace NovaUI.NetCore.Windows
 			}
 			else if (minimize.Contains(e.Location) && MinimizeBox)
 			{
-				if (animateWindow) Fade(false, () => WindowState = FormWindowState.Minimized);
-				else WindowState = FormWindowState.Minimized;
+				if (animateWindow) Fade(false, () =>
+				{
+					stateChangeSize = ClientSize;
+					WindowState = FormWindowState.Minimized;
+				});
+				else
+				{
+					stateChangeSize = ClientSize;
+					WindowState = FormWindowState.Minimized;
+				}
 			}
 			else if (maximize.Contains(e.Location) && MinimizeBox && MaximizeBox && canResize)
 			{
@@ -746,7 +754,6 @@ namespace NovaUI.NetCore.Windows
 				{
 					int wParam = (int)m.WParam & 0xFFF0;
 
-					if (wParam == Win32.SC_MINIMIZE) stateChangeSize = ClientSize;
 					if (wParam == Win32.SC_RESTORE) Size = stateChangeSize;
 				}
 			}
